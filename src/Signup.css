@@ -1,0 +1,236 @@
+/* Signup.css - Premium Glass UI */
+
+/* ---------- Theme ---------- */
+:root{
+    --bg1: #0f172a;
+    --bg2: #111827;
+
+    --text: rgba(255,255,255,0.92);
+    --muted: rgba(255,255,255,0.62);
+
+    --glass: rgba(255,255,255,0.08);
+    --glass2: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.14);
+
+    --shadow: 0 22px 55px rgba(0,0,0,0.45);
+    --radius: 22px;
+
+    --ring: rgba(56,189,248,0.45); /* sky */
+}
+
+/* ---------- Background (keep beautiful) ---------- */
+body{
+    margin: 0;
+    min-height: 100vh;
+    background:
+            radial-gradient(1200px 600px at 10% 10%, rgba(99,102,241,0.25), transparent 60%),
+            radial-gradient(900px 500px at 90% 20%, rgba(236,72,153,0.18), transparent 60%),
+            linear-gradient(180deg, var(--bg1), var(--bg2));
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* center everything */
+#root{
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 34px 14px;
+}
+
+/* ---------- Title (special, NOT white) ---------- */
+.title{
+    width: min(460px, 92vw);
+    margin: 0 auto 18px;
+    text-align: center;
+
+    font-weight: 900;
+    letter-spacing: 0.6px;
+    line-height: 1;
+
+    /* gradient text */
+    background: linear-gradient(90deg,
+    rgba(56,189,248,1),
+    rgba(99,102,241,1),
+    rgba(236,72,153,1)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    font-size: 40px;
+
+    /* premium glow */
+    filter: drop-shadow(0 14px 30px rgba(0,0,0,0.45));
+    text-shadow: none;
+}
+
+/* subtle subtitle line under title (auto) */
+.title::after{
+    content: "Create your account";
+    display: block;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.35px;
+    color: rgba(199,210,254,0.75); /* indigo-200-ish */
+}
+
+/* ---------- Card layout (your two blocks) ---------- */
+.signup{
+    width: min(460px, 92vw);
+    margin: 0 auto;
+}
+
+/* inputs block = premium glass card */
+.signup:not(.button){
+    position: relative;
+    padding: 26px;
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, var(--glass), var(--glass2));
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* decorative light corners */
+.signup:not(.button)::before{
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: calc(var(--radius) + 1px);
+    padding: 1px;
+    background: linear-gradient(135deg,
+    rgba(56,189,248,0.35),
+    rgba(99,102,241,0.25),
+    rgba(236,72,153,0.20)
+    );
+    -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+/* button block: place close under the card like a footer */
+.signup.button{
+    width: min(460px, 92vw);
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+}
+
+/* ---------- Inputs ---------- */
+.signup input{
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 13px 14px;
+    border-radius: 14px;
+
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(2,6,23,0.38); /* deep translucent */
+    color: var(--text);
+
+    font-size: 15px;
+    font-weight: 650;
+    letter-spacing: 0.2px;
+
+    outline: none;
+    transition: transform 120ms ease, border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.signup input::placeholder{
+    color: rgba(255,255,255,0.48);
+    font-weight: 600;
+}
+
+.signup input:hover{
+    border-color: rgba(255,255,255,0.22);
+    background: rgba(2,6,23,0.46);
+}
+
+.signup input:focus{
+    border-color: rgba(56,189,248,0.55);
+    box-shadow: 0 0 0 4px var(--ring);
+    transform: translateY(-1px);
+}
+
+/* ---------- Button (premium gradient with shine) ---------- */
+.signup.button button{
+    width: 100%;
+    padding: 13px 14px;
+    border: none;
+    border-radius: 16px;
+
+    cursor: pointer;
+    color: rgba(255,255,255,0.95);
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.45px;
+    text-transform: uppercase;
+
+    background: linear-gradient(135deg,
+    rgba(56,189,248,0.95),
+    rgba(99,102,241,0.98),
+    rgba(236,72,153,0.95)
+    );
+
+    box-shadow:
+            0 18px 35px rgba(99,102,241,0.20),
+            0 12px 28px rgba(236,72,153,0.12),
+            0 10px 22px rgba(56,189,248,0.10);
+
+    position: relative;
+    overflow: hidden;
+    transition: transform 140ms ease, filter 180ms ease;
+}
+
+/* glossy shine */
+.signup.button button::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg,
+    transparent 0%,
+    rgba(255,255,255,0.22) 35%,
+    transparent 70%
+    );
+    transform: translateX(-120%);
+    transition: transform 520ms ease;
+}
+
+.signup.button button:hover{
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+}
+
+.signup.button button:hover::before{
+    transform: translateX(120%);
+}
+
+.signup.button button:active{
+    transform: translateY(0px) scale(0.99);
+}
+
+/* future-proof: disabled */
+.signup.button button:disabled{
+    opacity: 0.55;
+    cursor: not-allowed;
+    filter: grayscale(0.2);
+    transform: none;
+    box-shadow: none;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 420px){
+    .title{ font-size: 34px; }
+    .signup:not(.button){ padding: 20px; }
+}
