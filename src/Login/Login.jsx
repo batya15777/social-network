@@ -118,7 +118,7 @@ function Login(){
                 <button>
                     {/*disabled={rangeCheckUser ||rangeCheckPassword ||buttonDisabled}*/}
                     {/*    onClick={}*/}
-                    signup
+                    Create a new account
                 </button>
             </div>
         </>
