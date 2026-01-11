@@ -335,9 +335,10 @@ body::after{
     font-weight: 600;
 }
 
+/* ✅ FIX HERE: use background-color (don't reset bg-repeat/size) */
 .input:hover{
     border-color: rgba(255,255,255,0.22);
-    background: rgba(2,6,23,0.48);
+    background-color: rgba(2,6,23,0.48);
 }
 
 .input:focus{
@@ -489,4 +490,19 @@ body::after{
     .brand-title{ font-size: 34px; }
     .logo{ width: 48px; height: 48px; font-size: 13px; }
     .card-inner{ padding: 20px; }
+}
+
+/* =========================================================
+   ✅ FIX: stop icon tiling on hover/focus/autofill (no UI change)
+   ========================================================= */
+.input,
+.input:hover,
+.input:focus,
+.input:active,
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus{
+    background-repeat: no-repeat !important;
+    background-position: 14px 50% !important;
+    background-size: 18px 18px !important;
 }
