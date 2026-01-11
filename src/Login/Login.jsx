@@ -4,52 +4,86 @@ import "./Login.css"
 function Login(){
     const [username,setUsername] = useState("")
     const [password,setPassword] = useState("")
+    const [error,setError] = useState("")
     const [buttonDisabled,setButtonDisabled] = useState(false)
     const [users,setUsers] = useState([
         {username:"" ,password: ""}
     ])
+    // לבדוק עם אביה אם זה לא כפל קוד לבדוק פעמיים user ו סיסמה גם בדף הרשמה וגם בלןגין ואם זה לא כפל קוד גם להגדיר regex שוב פעמיים וגם error
 
-    const rangeCheckUser =()=>{
-        if (username.length === null)
-            return false
-
-        if (username.length>=4 && username.length <=10){
-            return true
-        }
+    const usernameRegex =()=>{
+        const usernameR = /^[A-Za-z][A-Za-z0-9]{3,7}$/
+        return usernameR.test(username.trim())
     }
 
-    const rangeCheckPassword =()=>{
-        if (password.length === null)
-            return false
+    const passwordRegex =()=>{
+        const passwordR =/^[A-Za-z][A-Za-z0-9]{3,7}$/
+        // רוצה להגביל סיסמה באורך 8-20 יכו להתחי באות גדולה או קטנה או מספר וחובה שיכלולל אחד מהתווים הבאים ₪%$#@!
 
-        if (password.length>=8 && password.length <=20){
-            return true
-        }
+        return passwordR.test(password.trim())
     }
 
-    const checkUserName =()=>{
-        if (rangeCheckUser){
-            return true
+
+
+
+
+
+    const checkUserName = ()=>{
+        let userChack = true;
+        if (username.trim().length === 0){
+            userChack = false;
+            setError("Please enter a user name")
+        }
+        else if (!usernameRegex()){
+            setError("A username must start with a letter, be 4–8 characters long, and contain only English letters and numbers.")
+            userChack = false;
         }
 
-        const checkUPassword =()=>{
-            if (rangeCheckUser){
-                return true
-            }
+        return userChack
+    }
+    const checkPassword = ()=>{
+        let passwordChack = true;
+        if (password.trim().length === 0){
+            passwordChack = false;
+            setError("Please enter a password")
+        }
+        else if (!passwordRegex()){
+            setError("")
+            passwordChack = false;
+
+        }
+
+        return passwordChack
+    }
 
             const addToListUsers =(username,password) =>{
                 const tempLIst = [...users];
                 const tempObject = tempLIst[username,password];
-                if (checkUserName() && checkUPassword()){
-                    while (checkUserName() && checkUPassword()){
+                if (checkUserName() && checkPassword()){
+                    while (checkUserName() && checkPassword()){
                         tempLIst.push(username,password)
                     }
                     setUsers(tempLIst)
                 }
                 return users
             }
-        }
-    }
+            const validation =() =>{
+        setError("")
+              if (!checkUserName()){
+                  return false;
+              }
+              if (!checkPassword()){
+                  return false;
+              }
+              else {
+              //     לבדוק קריאת api ולצרף לרשימת user
+              }
+
+
+
+            }
+
+
 
     return(
         <>
@@ -57,6 +91,7 @@ function Login(){
                 Social Network
             </div>
 
+            {error && <div className="error-box">{error}</div>}
 
             <div className={"login"}>
                 <input
@@ -74,6 +109,9 @@ function Login(){
                     min={8}
                     max={20}
                 />
+                <button onClick={validation}>
+                    Login
+                </button>
             </div>
 
             <div className={"login button"}>

@@ -71,11 +71,12 @@ body::after{
     100% { transform: translate(0,0) scale(1); }
 }
 
-/* center */
+/* ---------- Root layout: title top, card middle, signup bottom ---------- */
 #root{
     min-height:100vh;
-    display:grid;
-    place-items:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     padding:34px 14px;
     position: relative;
 }
@@ -182,10 +183,26 @@ body::after{
     50%     { transform: scaleX(1.05); opacity: 0.95; }
 }
 
+/* ---------- Error box (tight to card) ---------- */
+.error-box{
+    width: min(480px, 92vw);
+    background: rgba(239,68,68,0.14);
+    border: 1px solid rgba(239,68,68,0.35);
+    color: rgba(255,255,255,0.92);
+    padding: 10px 12px;
+    border-radius: 14px;
+    font-size: 13px;
+
+    /* spacing handled by centering rules below */
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* ---------- Layout (your classes) ---------- */
 .login{
     width: min(480px, 92vw);
-    margin: 0 auto;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 /* ---------- Card (extra elements: border + shine) ---------- */
@@ -267,7 +284,11 @@ body::after{
     position: relative;
     z-index: 1;
 
-    transition: border-color 160ms ease, box-shadow 160ms ease, transform 120ms ease, background 160ms ease;
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 120ms ease, background-color 160ms ease;
+
+    background-repeat: no-repeat;
+    background-position: 14px 50%;
+    background-size: 18px 18px;
 }
 
 .login input::placeholder{
@@ -277,7 +298,7 @@ body::after{
 
 .login input:hover{
     border-color: rgba(255,255,255,0.22);
-    background: rgba(2,6,23,0.48);
+    background-color: rgba(2,6,23,0.48);
 }
 
 .login input:focus{
@@ -289,20 +310,74 @@ body::after{
 /* icon: username (first input) */
 .login:not(.button) input:first-of-type{
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23c7d2fe' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21a8 8 0 0 0-16 0'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: 14px 50%;
-    background-size: 18px 18px;
 }
 
 /* icon: password (second input) */
 .login:not(.button) input:last-of-type{
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23bae6fd' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='11' width='18' height='11' rx='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: 14px 50%;
-    background-size: 18px 18px;
 }
 
-/* ---------- Button (more attractive) ---------- */
+/* =========================================================
+   ✅ Login button ONLY (inside the card) — dark blue
+   (does NOT touch the bottom signup button)
+   ========================================================= */
+.login:not(.button) button{
+    width:100%;
+    padding: 14px 16px;
+    border: none;
+    border-radius: 16px;
+
+    cursor:pointer;
+    color: rgba(255,255,255,0.95);
+    font-size: 14px;
+    font-weight: 950;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    /* dark blue */
+    background: linear-gradient(135deg,
+    rgba(30,58,138,1),
+    rgba(37,99,235,0.90)
+    );
+
+    box-shadow:
+            0 18px 36px rgba(37,99,235,0.20),
+            0 14px 30px rgba(30,58,138,0.22);
+
+    position: relative;
+    overflow:hidden;
+    transition: transform 140ms ease, filter 170ms ease;
+}
+
+.login:not(.button) button::before{
+    content:"";
+    position:absolute;
+    inset: 0;
+    background: linear-gradient(120deg,
+    transparent 0%,
+    rgba(255,255,255,0.22) 35%,
+    transparent 70%
+    );
+    transform: translateX(-120%);
+    transition: transform 520ms ease;
+}
+
+.login:not(.button) button:hover{
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+}
+
+.login:not(.button) button:hover::before{
+    transform: translateX(120%);
+}
+
+.login:not(.button) button:active{
+    transform: translateY(0px) scale(0.99);
+}
+
+/* =========================================================
+   ✅ Bottom signup button (KEEP exactly as before)
+   ========================================================= */
 .login.button{
     width: min(480px, 92vw);
     margin-top: 16px;
@@ -340,7 +415,7 @@ body::after{
     animation: buttonPulse 6s ease-in-out infinite;
 }
 
-/* gentle pulse to draw attention (not annoying) */
+/* gentle pulse */
 @keyframes buttonPulse{
     0%, 85%, 100% { box-shadow: 0 18px 36px rgba(99,102,241,0.22), 0 14px 30px rgba(236,72,153,0.14), 0 12px 26px rgba(56,189,248,0.12); }
     92% { box-shadow: 0 22px 44px rgba(99,102,241,0.28), 0 18px 36px rgba(236,72,153,0.18), 0 16px 32px rgba(56,189,248,0.16); }
@@ -388,46 +463,32 @@ body::after{
     .login:not(.button){ padding: 20px; }
 }
 
-/* ===== FIX: keep same heights, only center horizontally + button bottom ===== */
-#root{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 34px 14px;
+/* =========================================================
+   ✅ CENTERING RULES:
+   - title stays top
+   - error + card centered together
+   - signup stays bottom
+   ========================================================= */
+
+/* if error exists: center (error + card) as a group */
+#root:has(.error-box) .error-box{
+    margin-top: auto;
+    margin-bottom: 10px; /* tight to card */
 }
 
-/* title stays at the top */
-.title{
+#root:has(.error-box) .login:not(.button){
     margin-top: 0;
+    margin-bottom: auto;
 }
 
-/* inputs stay in the middle */
-.login:not(.button){
+/* if no error: center only the card */
+#root:not(:has(.error-box)) .login:not(.button){
     margin-top: auto;
     margin-bottom: auto;
 }
 
-/* button stays at the bottom */
+/* keep signup at bottom */
 .login.button{
-    margin-top: 0;
+    margin-top: auto;
     margin-bottom: 0;
-    width: min(480px, 92vw);
-}
-
-/* keep blocks centered (safety) */
-.title, .login, .login.button{
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* ✅ Center everything horizontally only — keep heights exactly the same */
-body{
-    display: flex;
-    justify-content: center;
-}
-
-#root{
-    width: 100%;
-    max-width: 480px;
 }

@@ -153,7 +153,10 @@ function Signup(){
         }
         if (!checkPassword()){
             return false
+        }else {
+        //     לבדוק עם אביה עם פה צריך לבצע קריאת api שיבדוק עם הuser קיים ואם צריך פה ליצור מערך של users כמו בלוגין רבל פה האובייקט גדול יותר כי הצטרף לי עוד פרטים
         }
+
 
 
        return true;
