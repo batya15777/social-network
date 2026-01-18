@@ -9,7 +9,8 @@ function Login(){
     const [password,setPassword] = useState("")
     const [error,setError] = useState("")
     const navigate = useNavigate()
-    const [buttonDisabled,setButtonDisabled] = useState(false)
+
+    // const [buttonDisabled,setButtonDisabled] = useState(false)
 
 
 
@@ -65,8 +66,8 @@ function Login(){
 
                  })
                  .catch(() => setError("Server error. Please try again."))
-
             }
+
             const registrationPage = () =>{
                   navigate("/signup-user")
             }

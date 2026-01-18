@@ -18,8 +18,18 @@ function Signup(){
 
 
 
+
+
+
+
+
+
+
+
+
+
     const fullNameRegex =(value)=>{
-        const fullName = /^[A-Za-z]{2,8}$/;
+        const fullName = /^[A-Za-z]{2,10}$/;
         return fullName.test(value.trim())
     }
 
@@ -38,10 +48,9 @@ function Signup(){
 
      const passwordRegex =()=>{
         const passwordR =  /^[A-Z](?=.*[#!@])[A-Za-z0-9#!@]{7,19}$/
-
-
-        return passwordR.test(password.trim())
+         return passwordR.test(password.trim())
     }
+
     const checkName = ()=>{
       let nameChack = true;
         if (name.trim().length === 0){
@@ -67,18 +76,16 @@ function Signup(){
             setError("The last name must contain only letters.")
             lastChack = false;
         }
-
-
         return lastChack
     }
-    const checkPhone = ()=>{
+     const checkPhone = ()=>{
         let PhoneChack = true;
         if (phone.trim().length === 0){
             PhoneChack = false;
             setError("Please enter a phone number.")
         }
         else if (!phoneRegex()){
-            setError("Invalid phone number. Must start with 05 and contain 10 digits.")
+            setError("Invalid phone number, must start with 05 and contain 10 digits.")
             PhoneChack = false;
 
         }
@@ -122,7 +129,8 @@ function Signup(){
 
     }
 
-    const validation = () => {
+    const validation = (event) => {
+        event.preventDefault()
         setError("")
         let valid = true;
         if (!checkName() ||!checkLastName() || !checkPhone() ||!chackGeneralSex()||!checkUserName() || !checkPassword()){
@@ -158,105 +166,107 @@ function Signup(){
 
     return (
        <>
-           <div className="auth-page">
-               <div className="blob b1" />
-               <div className="blob b2" />
-               <div className="grain" />
+         <form onSubmit={validation}>
+             <div className="auth-page">
+                 <div className="blob b1" />
+                 <div className="blob b2" />
+                 <div className="grain" />
 
-               <div className="auth-shell">
-                   <div className="brand">
-                       <div className="logo">SN</div>
-                       <h1 className="brand-title">Registration</h1>
-                       <p className="brand-sub">Create your account</p>
-                   </div>
+                 <div className="auth-shell">
+                     <div className="brand">
+                         <div className="logo">SN</div>
+                         <h1 className="brand-title">Registration</h1>
+                         <p className="brand-sub">Create your account</p>
+                     </div>
 
-                   <div className="card">
-                       <div className="card-frame" />
-                       <div className="card-shine" />
+                     <div className="card">
+                         <div className="card-frame" />
+                         <div className="card-shine" />
 
-                       <div className="card-inner">
-                           <h2 className="card-title">Create a new account</h2>
-                           <p className="card-subtitle">It’s quick and easy.</p>
+                         <div className="card-inner">
+                             <h2 className="card-title">Create a new account</h2>
+                             <p className="card-subtitle">It’s quick and easy.</p>
 
-                           {error && <div className="error-box">{error}</div>}
+                             {error && <div className="error-box">{error}</div>}
 
-                           <div className="row-2">
-                               <input
-                                   className="input"
-                                   placeholder="First name"
-                                   type="text"
-                                   value={name}
-                                   onChange={(e) => setName(e.target.value)}
-                               />
+                             <div className="row-2">
+                                 <input
+                                     className="input"
+                                     placeholder="First name"
+                                     type="text"
+                                     value={name}
+                                     onChange={(e) => setName(e.target.value)}
+                                 />
 
-                               <input
-                                   className="input"
-                                   placeholder="Last name"
-                                   type="text"
-                                   value={lastName}
-                                   onChange={(e) => setLastName(e.target.value)}
-                               />
-                           </div>
+                                 <input
+                                     className="input"
+                                     placeholder="Last name"
+                                     type="text"
+                                     value={lastName}
+                                     onChange={(e) => setLastName(e.target.value)}
+                                 />
+                             </div>
 
-                           <input
-                               className="input"
-                               placeholder="Phone number"
-                               type="tel"
-                               value={phone}
-                               onChange={(e) => setPhone(e.target.value)}
-                           />
+                             <input
+                                 className="input"
+                                 placeholder="Phone number"
+                                 type="tel"
+                                 value={phone}
+                                 onChange={(e) => setPhone(e.target.value)}
+                             />
 
-                           <div className="field">
-                               <div className="field-label">Gender</div>
+                             <div className="field">
+                                 <div className="field-label">Gender</div>
 
-                               <div className="gender-row two">
-                                   <label className={`gender-pill ${generalSex === "female" ? "active" : ""}`}>
-                                       <span>Female</span>
-                                       <input
-                                           type="radio"
-                                           name="gender"
-                                           value="female"
-                                           checked={generalSex === "female"}
-                                           onChange={(e) => setGeneralSex(e.target.value)}
-                                       />
-                                   </label>
+                                 <div className="gender-row two">
+                                     <label className={`gender-pill ${generalSex === "female" ? "active" : ""}`}>
+                                         <span>Female</span>
+                                         <input
+                                             type="radio"
+                                             name="gender"
+                                             value="female"
+                                             checked={generalSex === "female"}
+                                             onChange={(e) => setGeneralSex(e.target.value)}
+                                         />
+                                     </label>
 
-                                   <label className={`gender-pill ${generalSex === "male" ? "active" : ""}`}>
-                                       <span>Male</span>
-                                       <input
-                                           type="radio"
-                                           name="gender"
-                                           value="male"
-                                           checked={generalSex === "male"}
-                                           onChange={(e) => setGeneralSex(e.target.value)}
-                                       />
-                                   </label>
-                               </div>
-                           </div>
+                                     <label className={`gender-pill ${generalSex === "male" ? "active" : ""}`}>
+                                         <span>Male</span>
+                                         <input
+                                             type="radio"
+                                             name="gender"
+                                             value="male"
+                                             checked={generalSex === "male"}
+                                             onChange={(e) => setGeneralSex(e.target.value)}
+                                         />
+                                     </label>
+                                 </div>
+                             </div>
 
-                           <input
-                               className="input"
-                               placeholder="Username"
-                               type="text"
-                               value={username}
-                               onChange={(e) => setUsername(e.target.value)}
-                           />
+                             <input
+                                 className="input"
+                                 placeholder="Username"
+                                 type="text"
+                                 value={username}
+                                 onChange={(e) => setUsername(e.target.value)}
+                             />
 
-                           <input
-                               className="input"
-                               placeholder="Password"
-                               type="password"
-                               value={password}
-                               onChange={(e) => setPassword(e.target.value)}
-                           />
+                             <input
+                                 className="input"
+                                 placeholder="Password"
+                                 type="password"
+                                 value={password}
+                                 onChange={(e) => setPassword(e.target.value)}
+                             />
 
-                           <button className="btn-shine" onClick={validation}>
-                               Sign Up
-                           </button>
-                       </div>
-                   </div>
-               </div>
-           </div>
+                             <button className="btn-shine" type={"submit"}>
+                                 Sign Up
+                             </button>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </form>
        </>
     );
     }
