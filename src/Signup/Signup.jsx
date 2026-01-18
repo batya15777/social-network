@@ -105,7 +105,7 @@ function Signup(){
             setError("Please enter a password")
         }
         else if (!passwordRegex()){
-            setError(" password must start with a letter, be 8–20 characters long, and contain only English letters and numbers.")
+            setError("The password must start with a capital letter, be 8-20 characters long, and contain only English letters and numbers, and must contain at least one of the following characters !@# .")
             passwordChack = false;
         }
 
