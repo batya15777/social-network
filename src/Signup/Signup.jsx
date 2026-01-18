@@ -1,5 +1,7 @@
 import {useState} from "react";
 import "./Signup.css"
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -8,17 +10,12 @@ function Signup(){
     const [name,setName] = useState("");
     const [lastName,setLastName] = useState("");
     const [phone,setPhone] = useState("");
-    //
     const [generalSex,setGeneralSex] = useState("");
-    //
-    // const [years,setYears] = useState([])
-    // const [month,setMonth] = useState([])
-    // const [day,setDay] = useState([])
-
     const [username,setUsername] = useState("")
     const [password,setPassword] = useState("")
-
     const [error,setError] = useState("")
+    const navigate = useNavigate()
+
 
 
     const fullNameRegex =(value)=>{
@@ -30,30 +27,22 @@ function Signup(){
         const phoneR = /^05\d{8}$/
         return phoneR.test(phone.trim())
     }
-    const usernameRegex =()=>{
-       const usernameR = /^[A-Za-z][A-Za-z0-9]{3,7}$/
+
+
+
+
+     const usernameRegex =()=>{
+        const usernameR = /^[A-Za-z][A-Za-z0-9]{3,7}$/
         return usernameR.test(username.trim())
     }
 
      const passwordRegex =()=>{
-        const passwordR =/^[A-Za-z][A-Za-z0-9]{3,7}$/
-         // רוצה להגביל סיסמה באורך 8-20 יכו להתחי באות גדולה או קטנה או מספר וחובה שיכלולל אחד מהתווים הבאים ₪%$#@!
+        const passwordR =  /^[A-Z](?=.*[#!@])[A-Za-z0-9#!@]{7,19}$/
+
 
         return passwordR.test(password.trim())
-     }
-
-
-
-
-
-
-
-
-
-
-
-
-  const checkName = ()=>{
+    }
+    const checkName = ()=>{
       let nameChack = true;
         if (name.trim().length === 0){
             nameChack = false;
@@ -116,9 +105,8 @@ function Signup(){
             setError("Please enter a password")
         }
         else if (!passwordRegex()){
-            setError("")
+            setError(" password must start with a letter, be 8–20 characters long, and contain only English letters and numbers.")
             passwordChack = false;
-
         }
 
         return passwordChack
@@ -136,30 +124,27 @@ function Signup(){
 
     const validation = () => {
         setError("")
-        if (!checkName()){
-            return false
-        }
-        if (!checkLastName()){
-            return false
-        }
-        if (!checkPhone()){
-            return false
-        }
-        if (!chackGeneralSex()){
-            return false
-        }
-        if (!checkUserName()){
-            return false
-        }
-        if (!checkPassword()){
-            return false
+        let valid = true;
+        if (!checkName() ||!checkLastName() || !checkPhone() ||!chackGeneralSex()||!checkUserName() || !checkPassword()){
+            valid = false
         }else {
-        //     לבדוק עם אביה עם פה צריך לבצע קריאת api שיבדוק עם הuser קיים ואם צריך פה ליצור מערך של users כמו בלוגין רבל פה האובייקט גדול יותר כי הצטרף לי עוד פרטים
+          apiSignup()
+
         }
 
 
+    }
+    const apiSignup= () => {
+        axios.post("http://localhost:8080/signup-user",{name,lastName,phone,generalSex,username,password})
+            .then((response =>{
+                if (response.data.success){
+                    navigate("/dashboard")
 
-       return true;
+                }
+                else {
+                    setError("erroe");
+                }
+            }))
 
     }
 
@@ -172,105 +157,107 @@ function Signup(){
 
 
     return (
-        <div className="auth-page">
-            <div className="blob b1" />
-            <div className="blob b2" />
-            <div className="grain" />
+       <>
+           <div className="auth-page">
+               <div className="blob b1" />
+               <div className="blob b2" />
+               <div className="grain" />
 
-            <div className="auth-shell">
-                <div className="brand">
-                    <div className="logo">SN</div>
-                    <h1 className="brand-title">Registration</h1>
-                    <p className="brand-sub">Create your account</p>
-                </div>
+               <div className="auth-shell">
+                   <div className="brand">
+                       <div className="logo">SN</div>
+                       <h1 className="brand-title">Registration</h1>
+                       <p className="brand-sub">Create your account</p>
+                   </div>
 
-                <div className="card">
-                    <div className="card-frame" />
-                    <div className="card-shine" />
+                   <div className="card">
+                       <div className="card-frame" />
+                       <div className="card-shine" />
 
-                    <div className="card-inner">
-                        <h2 className="card-title">Create a new account</h2>
-                        <p className="card-subtitle">It’s quick and easy.</p>
+                       <div className="card-inner">
+                           <h2 className="card-title">Create a new account</h2>
+                           <p className="card-subtitle">It’s quick and easy.</p>
 
-                        {error && <div className="error-box">{error}</div>}
+                           {error && <div className="error-box">{error}</div>}
 
-                        <div className="row-2">
-                            <input
-                                className="input"
-                                placeholder="First name"
-                                type="text"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                            />
+                           <div className="row-2">
+                               <input
+                                   className="input"
+                                   placeholder="First name"
+                                   type="text"
+                                   value={name}
+                                   onChange={(e) => setName(e.target.value)}
+                               />
 
-                            <input
-                                className="input"
-                                placeholder="Last name"
-                                type="text"
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
-                            />
-                        </div>
+                               <input
+                                   className="input"
+                                   placeholder="Last name"
+                                   type="text"
+                                   value={lastName}
+                                   onChange={(e) => setLastName(e.target.value)}
+                               />
+                           </div>
 
-                        <input
-                            className="input"
-                            placeholder="Phone number"
-                            type="tel"
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
-                        />
+                           <input
+                               className="input"
+                               placeholder="Phone number"
+                               type="tel"
+                               value={phone}
+                               onChange={(e) => setPhone(e.target.value)}
+                           />
 
-                        <div className="field">
-                            <div className="field-label">Gender</div>
+                           <div className="field">
+                               <div className="field-label">Gender</div>
 
-                            <div className="gender-row two">
-                                <label className={`gender-pill ${generalSex === "female" ? "active" : ""}`}>
-                                    <span>Female</span>
-                                    <input
-                                        type="radio"
-                                        name="gender"
-                                        value="female"
-                                        checked={generalSex === "female"}
-                                        onChange={(e) => setGeneralSex(e.target.value)}
-                                    />
-                                </label>
+                               <div className="gender-row two">
+                                   <label className={`gender-pill ${generalSex === "female" ? "active" : ""}`}>
+                                       <span>Female</span>
+                                       <input
+                                           type="radio"
+                                           name="gender"
+                                           value="female"
+                                           checked={generalSex === "female"}
+                                           onChange={(e) => setGeneralSex(e.target.value)}
+                                       />
+                                   </label>
 
-                                <label className={`gender-pill ${generalSex === "male" ? "active" : ""}`}>
-                                    <span>Male</span>
-                                    <input
-                                        type="radio"
-                                        name="gender"
-                                        value="male"
-                                        checked={generalSex === "male"}
-                                        onChange={(e) => setGeneralSex(e.target.value)}
-                                    />
-                                </label>
-                            </div>
-                        </div>
+                                   <label className={`gender-pill ${generalSex === "male" ? "active" : ""}`}>
+                                       <span>Male</span>
+                                       <input
+                                           type="radio"
+                                           name="gender"
+                                           value="male"
+                                           checked={generalSex === "male"}
+                                           onChange={(e) => setGeneralSex(e.target.value)}
+                                       />
+                                   </label>
+                               </div>
+                           </div>
 
-                        <input
-                            className="input"
-                            placeholder="Username"
-                            type="text"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
+                           <input
+                               className="input"
+                               placeholder="Username"
+                               type="text"
+                               value={username}
+                               onChange={(e) => setUsername(e.target.value)}
+                           />
 
-                        <input
-                            className="input"
-                            placeholder="Password"
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
+                           <input
+                               className="input"
+                               placeholder="Password"
+                               type="password"
+                               value={password}
+                               onChange={(e) => setPassword(e.target.value)}
+                           />
 
-                        <button className="btn-shine" onClick={validation}>
-                            Sign Up
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+                           <button className="btn-shine" onClick={validation}>
+                               Sign Up
+                           </button>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </>
     );
     }
 export default Signup
