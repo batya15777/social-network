@@ -1,6 +1,6 @@
 import {useState} from "react";
 import "./Login.css"
-;
+import Cookies from "js-cookie";
 import axios from "axios";
 import {Link, useNavigate} from "react-router-dom";
 
@@ -57,15 +57,16 @@ function Login(){
              axios.post("http://localhost:8080/login",{username,password})
                  .then(response =>{
                      if (response.data.success){
+                         console.log(response.data)
                          Cookies.set("token",response.data.token)
                          navigate("/dashboard")
 
 
-                     //     link
+
                      }
 
                  })
-                 .catch(() => setError("Server error. Please try again."))
+                  setError("Server error. Please try again.")
             }
 
             const registrationPage = () =>{
