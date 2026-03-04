@@ -13,7 +13,7 @@ function Profile(){
 
      const isDisabled=()=>{
          let disable = false;
-         if ( editProfile === null||editProfile.trim().length ===0 ){
+         if ( editProfile === null||editProfile.trim().length === 0 ){
              disable = true;
          }
          return disable;
