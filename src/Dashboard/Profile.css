@@ -9,7 +9,7 @@
     pointer-events: auto;
 }
 
-/* ✅ make sure overlays don't block clicks */
+/* make sure overlays don't block clicks */
 .profilePage::before,
 .profilePage::after{
     pointer-events: none;
@@ -54,11 +54,14 @@
     place-items: center;
 }
 
+/* avatar image */
 .avatarImg{
     width: 100%;
     height: 100%;
     border-radius: 999px;
     object-fit: cover;
+    object-position: center;
+    overflow: hidden;
     display: block;
 
     border: 3px solid rgba(2,6,23,0.75);
