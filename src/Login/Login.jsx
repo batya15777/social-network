@@ -59,7 +59,7 @@ function Login(){
                      if (response.data.success){
                          console.log(response.data)
                          Cookies.set("token",response.data.token)
-                         navigate("/dashboard")
+                         navigate("/profile")
 
 
 
