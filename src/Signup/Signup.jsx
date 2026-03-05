@@ -42,7 +42,7 @@ function Signup(){
 
 
      const usernameRegex =()=>{
-        const usernameR = /^[A-Za-z][A-Za-z0-9]{3,7}$/
+        const usernameR = /^[A-Za-z][A-Za-z0-9]{3,19}$/
         return usernameR.test(username.trim())
     }
 
@@ -99,7 +99,7 @@ function Signup(){
             setError("Please enter a user name")
         }
         else if (!usernameRegex()){
-            setError("A username must start with a letter, be 4–8 characters long, and contain only English letters and numbers.")
+            setError("A username must start with a letter, be 4–20 characters long, and contain only English letters and numbers.")
             userChack = false;
         }
 

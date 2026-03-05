@@ -60,13 +60,15 @@ function Login(){
                          console.log(response.data)
                          Cookies.set("token",response.data.token)
                          navigate("/profile")
-
-
+                     }else {
+                         setError("Server error. Please try again.")
 
                      }
 
+
                  })
-                  setError("Server error. Please try again.")
+
+
             }
 
             const registrationPage = () =>{
