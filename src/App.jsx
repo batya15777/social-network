@@ -3,6 +3,7 @@ import Signup from "./Signup/Signup.jsx";
 import Login from "./Login/Login.jsx";
 import Dashboard from "./Dashboard/Dashboard.jsx";
 import Profile from "./Dashboard/Profile.jsx";
+import Search from "./Search/Search.jsx";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                 <Route path= "/signup-user" element={<Signup/>} />
                 <Route path= "/dashboard"  element={<Dashboard/>} />
                 <Route path= "/profile" element={<Profile/>} />
+                <Route path= "/search" element={<Search/>} />
             </Routes>
         </BrowserRouter>
     );

@@ -4,22 +4,15 @@
 
 
 
+import Navbar from "../Navbar/Navbar.jsx";
+
 function Dashboard (){
-    const [userName,setUserName]  = useState('');
 
-    useEffect(() => {
-        axios.post("http://localhost:8080/show-user",{token:token})
-            .then((response =>
-                    setUserName(response.data.username)
-            ))
-
-    }, []);
-    const token = Cookies.get("token")
 
 
     return(
         <div>
-
+<Navbar/>
             DDDD
         </div>
     );

@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import "./Profile.css"
+import Navbar from "../Navbar/Navbar.jsx";
 
 function Profile(){
      const [profileData,setProfileData] = useState(
@@ -112,7 +113,11 @@ function Profile(){
 
     }
     return (
+
         <div className="profilePage">
+
+            <Navbar profileImage={profileData.profileUrl}/>
+
             <div className="profileHeader">
                 {/* LEFT SIDE */}
                 <div className="avatarCol">
@@ -170,7 +175,6 @@ function Profile(){
                 <div className="postsTab">POSTS</div>
             </div>
 
-            {/* EMPTY STATE (רק כשאין פוסטים בכלל) */}
             {posts.length === 0 && (
                 <div className="emptyPosts">
                     <div className="noPostsLine">
@@ -183,7 +187,6 @@ function Profile(){
                 </div>
             )}
 
-            {/* POSTS GRID (אינסטגרם: 3 בשורה, ריבוע) */}
             {posts.length > 0 && (
                 <div className="postsGrid">
                     {posts.map((p) => (
@@ -194,7 +197,6 @@ function Profile(){
                 </div>
             )}
 
-            {/* CREATE FLOATING BUTTON + PANEL */}
             <div className="createDock">
                 {isCreatingPost && (
                     <div className="createPanel">
@@ -218,11 +220,11 @@ function Profile(){
                     className="createFab"
                     type="button"
                     onClick={() => setCreatingPos((prev) => !prev)}
-                    aria-label="Create post"
                 >
                     <span className="plusIcon">+</span>
                 </button>
             </div>
+
         </div>
     );
     }
