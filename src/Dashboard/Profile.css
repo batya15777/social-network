@@ -1,99 +1,74 @@
 /* ---------- page container ---------- */
 
 .profilePage{
-    max-width: 980px;
-    margin: 0 auto;
-    padding-top: 48px;
-    padding-left: 160px;
-    padding-right: 14px;
-    padding-bottom: 140px;
-
-    min-height: 100vh;
-
-    position: relative;
-    z-index: 2;
+    max-width:980px;
+    margin:0 auto;
+    padding-top:48px;
+    padding-left:160px;
+    padding-right:14px;
+    padding-bottom:140px;
+    min-height:100vh;
+    position:relative;
+    z-index:2;
 }
 
-/* keep dark background on scroll */
+/* ---------- background ---------- */
 
 html,body,#root{
     min-height:100%;
     margin:0;
-
     background:
             radial-gradient(1200px 700px at 20% 10%, rgba(56,189,248,0.18), transparent 60%),
             radial-gradient(900px 600px at 80% 20%, rgba(236,72,153,0.16), transparent 60%),
             radial-gradient(1100px 800px at 50% 90%, rgba(99,102,241,0.18), transparent 65%),
             #050814;
-
-    background-attachment: fixed;
+    background-attachment:fixed;
 }
 
-/* ---------- header layout ---------- */
+/* ---------- header ---------- */
 
 .profileHeader{
     display:flex;
     align-items:flex-start;
-    gap: 40px;
+    gap:40px;
 }
-
-/* left column */
 
 .avatarCol{
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap: 14px;
-    min-width: 170px;
+    gap:14px;
+    min-width:170px;
 }
 
-/* avatar ring */
-
 .avatarRing{
-    width: 130px;
-    height: 130px;
-    border-radius: 999px;
-    padding: 4px;
-
-    background: linear-gradient(135deg,#5ecbff,#6366f1,#ff5ecf);
-
+    width:130px;
+    height:130px;
+    border-radius:999px;
+    padding:4px;
+    background:linear-gradient(135deg,#5ecbff,#6366f1,#ff5ecf);
     display:flex;
     align-items:center;
     justify-content:center;
 }
 
-/* avatar image */
-
 .avatarImg{
     width:100%;
     height:100%;
     border-radius:999px;
-
     object-fit:cover;
-    object-position:center;
-
-    display:block;
-
     border:3px solid rgba(2,6,23,0.75);
-    background:#020617;
 }
-
-/* edit button */
 
 .editBtnBelow{
     height:38px;
     padding:0 16px;
-
     border:none;
     border-radius:12px;
-
     background:linear-gradient(45deg,#5ecbff,#ff5ecf);
     color:white;
-
     font-weight:700;
     cursor:pointer;
-
-    transition:transform .15s;
 }
 
 .editBtnBelow:hover{
@@ -105,7 +80,7 @@ html,body,#root{
 .profileInfo{
     display:flex;
     flex-direction:column;
-    gap: 14px;
+    gap:14px;
     flex:1;
 }
 
@@ -123,8 +98,6 @@ html,body,#root{
     color:white;
 }
 
-/* edit input row */
-
 .editPicRow{
     display:flex;
     align-items:center;
@@ -134,12 +107,9 @@ html,body,#root{
 .profileInput{
     height:38px;
     width:320px;
-
     padding:0 12px;
-
     border-radius:12px;
     border:1px solid rgba(255,255,255,0.2);
-
     background:rgba(2,6,23,0.5);
     color:white;
 }
@@ -148,18 +118,13 @@ html,body,#root{
     color:rgba(255,255,255,0.5);
 }
 
-/* save button */
-
 .saveBtn{
     height:38px;
     padding:0 14px;
-
     border:none;
     border-radius:12px;
-
     background:linear-gradient(45deg,#5ecbff,#ff5ecf);
     color:white;
-
     font-weight:700;
     cursor:pointer;
 }
@@ -169,7 +134,7 @@ html,body,#root{
     cursor:not-allowed;
 }
 
-/* stats */
+/* ---------- stats ---------- */
 
 .profileStats{
     display:flex;
@@ -182,14 +147,14 @@ html,body,#root{
     color:white;
 }
 
-/* divider */
+/* ---------- divider ---------- */
 
 .divider{
     margin-top:28px;
     border-top:1px solid rgba(255,255,255,0.15);
 }
 
-/* posts tab */
+/* ---------- posts tab ---------- */
 
 .postsTabWrap{
     display:flex;
@@ -201,23 +166,35 @@ html,body,#root{
     font-size:13px;
     font-weight:900;
     letter-spacing:2px;
-
     padding-bottom:10px;
-
     border-bottom:2px solid #ff5ecf;
     color:white;
+}
+
+/* ---------- posts grid ---------- */
+
+.postsGrid{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+}
+
+.postTile{
+    aspect-ratio:1/1;
+    overflow:hidden;
+    border-radius:8px;
+    background:#020617;
 }
 
 /* ---------- empty posts ---------- */
 
 .emptyPosts{
     margin-top:70px;
-
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:12px;
-
     text-align:center;
 }
 
@@ -231,142 +208,27 @@ html,body,#root{
 .noPostsIcon{
     width:18px;
     height:18px;
-
     display:inline-block;
-
     background-size:contain;
     background-repeat:no-repeat;
     background-position:center;
-
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23c7d2fe' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='4'/%3E%3Cpath d='M8 14l2-2 2 2 4-4'/%3E%3C/svg%3E");
+}
+
+.noPostsText{
+    color:rgba(255,255,255,0.8);
 }
 
 .emptyTitle{
     font-size:42px;
     font-weight:900;
     color:white;
+    margin:0;
 }
 
 .emptySub{
     color:rgba(255,255,255,0.7);
-}
-
-/* ---------- posts grid ---------- */
-
-.postsGrid{
-    margin-top:20px;
-
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-
-    gap:8px;
-}
-
-.postTile{
-    aspect-ratio:1/1;
-    overflow:hidden;
-
-    border-radius:8px;
-    background:#020617;
-}
-
-.postImg{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-/* ---------- create floating ---------- */
-
-.createDock{
-    position:fixed;
-    bottom:24px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:50;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:12px;
-}
-
-.createPanel{
-    display:flex;
-    gap:10px;
-
-    padding:12px;
-
-    border-radius:16px;
-
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(12px);
-}
-
-.createInput{
-    height:40px;
-    padding:0 12px;
-
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,0.2);
-
-    background:rgba(2,6,23,0.6);
-    color:white;
-}
-
-.createSaveBtn{
-    height:40px;
-    padding:0 16px;
-
-    border:none;
-    border-radius:12px;
-
-    background:linear-gradient(45deg,#5ecbff,#ff5ecf);
-    color:white;
-
-    font-weight:700;
-    cursor:pointer;
-}
-
-.createFab{
-    width:46px;
-    height:46px;
-
-    border-radius:50%;
-    border:1px solid rgba(255,255,255,0.18);
-
-    background:rgba(255,255,255,0.10);
-
-    backdrop-filter:blur(10px);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    cursor:pointer;
-
-    box-shadow:0 8px 24px rgba(0,0,0,0.35);
-
-    transition:all .18s ease;
-}
-
-.createFab:hover{
-    background:rgba(255,255,255,0.16);
-    transform:translateY(-2px);
-}
-
-.createFab:active{
-    transform:scale(.95);
-}
-
-.plusIcon{
-    font-size:22px;
-    font-weight:900;
-    color:white;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    margin:0;
 }
 
 /* ---------- Navbar ---------- */
@@ -376,11 +238,9 @@ html,body,#root{
     top:50%;
     left:40px;
     transform:translateY(-50%);
-
     display:flex;
     flex-direction:column;
     gap:28px;
-
     z-index:200;
 }
 
@@ -388,15 +248,10 @@ html,body,#root{
     display:flex;
     align-items:center;
     gap:12px;
-
     text-decoration:none;
-
     font-size:18px;
     font-weight:700;
-
     color:white;
-
-    transition:all .18s ease;
 }
 
 .igNavItem:hover{
@@ -408,21 +263,289 @@ html,body,#root{
     width:24px;
 }
 
-/* bigger search icon */
+.searchIcon{
+    font-size:26px;
+}/* ---------- page container ---------- */
+
+.profilePage{
+    max-width:980px;
+    margin:0 auto;
+    padding-top:48px;
+    padding-left:160px;
+    padding-right:14px;
+    padding-bottom:140px;
+    min-height:100vh;
+    position:relative;
+    z-index:2;
+}
+
+/* ---------- background ---------- */
+
+html,body,#root{
+    min-height:100%;
+    margin:0;
+    background:
+            radial-gradient(1200px 700px at 20% 10%, rgba(56,189,248,0.18), transparent 60%),
+            radial-gradient(900px 600px at 80% 20%, rgba(236,72,153,0.16), transparent 60%),
+            radial-gradient(1100px 800px at 50% 90%, rgba(99,102,241,0.18), transparent 65%),
+            #050814;
+    background-attachment:fixed;
+}
+
+/* ---------- header ---------- */
+
+.profileHeader{
+    display:flex;
+    align-items:flex-start;
+    gap:40px;
+}
+
+.avatarCol{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    min-width:170px;
+}
+
+.avatarRing{
+    width:130px;
+    height:130px;
+    border-radius:999px;
+    padding:4px;
+    background:linear-gradient(135deg,#5ecbff,#6366f1,#ff5ecf);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.avatarImg{
+    width:100%;
+    height:100%;
+    border-radius:999px;
+    object-fit:cover;
+    border:3px solid rgba(2,6,23,0.75);
+}
+
+.editBtnBelow{
+    height:38px;
+    padding:0 16px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(45deg,#5ecbff,#ff5ecf);
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.editBtnBelow:hover{
+    transform:translateY(-2px);
+}
+
+/* ---------- profile info ---------- */
+
+.profileInfo{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    flex:1;
+}
+
+.profileTopRow{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.profileUsername{
+    font-size:34px;
+    font-weight:900;
+    color:white;
+}
+
+.editPicRow{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.profileInput{
+    height:38px;
+    width:320px;
+    padding:0 12px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.2);
+    background:rgba(2,6,23,0.5);
+    color:white;
+}
+
+.profileInput::placeholder{
+    color:rgba(255,255,255,0.5);
+}
+
+.saveBtn{
+    height:38px;
+    padding:0 14px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(45deg,#5ecbff,#ff5ecf);
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.saveBtn:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+/* ---------- stats ---------- */
+
+.profileStats{
+    display:flex;
+    gap:26px;
+    font-size:16px;
+    color:rgba(255,255,255,0.85);
+}
+
+.profileStats b{
+    color:white;
+}
+
+/* ---------- divider ---------- */
+
+.divider{
+    margin-top:28px;
+    border-top:1px solid rgba(255,255,255,0.15);
+}
+
+/* ---------- posts tab ---------- */
+
+.postsTabWrap{
+    display:flex;
+    justify-content:center;
+    margin-top:16px;
+}
+
+.postsTab{
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:2px;
+    padding-bottom:10px;
+    border-bottom:2px solid #ff5ecf;
+    color:white;
+}
+
+/* ---------- posts grid ---------- */
+
+.postsGrid{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+}
+
+.postTile{
+    aspect-ratio:1/1;
+    overflow:hidden;
+    border-radius:8px;
+    background:#020617;
+}
+
+/* ---------- empty posts ---------- */
+
+.emptyPosts{
+    margin-top:70px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+    text-align:center;
+}
+
+.noPostsLine{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    opacity:.8;
+}
+
+.noPostsIcon{
+    width:18px;
+    height:18px;
+    display:inline-block;
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23c7d2fe' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='4'/%3E%3Cpath d='M8 14l2-2 2 2 4-4'/%3E%3C/svg%3E");
+}
+
+.noPostsText{
+    color:rgba(255,255,255,0.8);
+}
+
+.emptyTitle{
+    font-size:42px;
+    font-weight:900;
+    color:white;
+    margin:0;
+}
+
+.emptySub{
+    color:rgba(255,255,255,0.7);
+    margin:0;
+}
+
+/* ---------- Navbar ---------- */
+
+.igNavbar{
+    position:fixed;
+    top:50%;
+    left:40px;
+    transform:translateY(-50%);
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+    z-index:200;
+}
+
+.igNavItem{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:700;
+    color:white;
+}
+
+.igNavItem:hover{
+    transform:translateX(6px);
+}
+
+.igNavIcon{
+    font-size:22px;
+    width:24px;
+}
 
 .searchIcon{
     font-size:26px;
 }
 
-/* profile image in navbar */
+.navProfileImg{
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid rgba(255,255,255,0.7);
+}
 
 .navProfileImg{
     width:22px;
     height:22px;
-
     border-radius:50%;
-
     object-fit:cover;
-
     border:2px solid rgba(255,255,255,0.7);
 }

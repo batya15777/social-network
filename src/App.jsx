@@ -4,6 +4,8 @@ import Login from "./Login/Login.jsx";
 import Dashboard from "./Dashboard/Dashboard.jsx";
 import Profile from "./Dashboard/Profile.jsx";
 import Search from "./Search/Search.jsx";
+import PostPage from "./Post/PostPage.jsx";
+import UserPage from "./UserPage.jsx";
 
 function App() {
     return (
@@ -14,6 +16,8 @@ function App() {
                 <Route path= "/dashboard"  element={<Dashboard/>} />
                 <Route path= "/profile" element={<Profile/>} />
                 <Route path= "/search" element={<Search/>} />
+                <Route path={"/post-page/:id/"} element={<PostPage/>}/>
+                <Route path={"/user-page/:id"} element={<UserPage/>} />
             </Routes>
         </BrowserRouter>
     );

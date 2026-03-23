@@ -1,0 +1,124 @@
+.userPage{
+    max-width:900px;
+    margin:auto;
+    padding-top:40px;
+}
+
+/* אזור עליון */
+
+.userPage .userTop{
+    display:flex;
+    align-items:flex-start;
+    gap:40px;
+}
+
+/* צד שמאל */
+
+.userPage .profileLeft{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* תמונת פרופיל */
+
+.userPage .userHeader img{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #7c6cff;
+}
+
+/* כפתור follow */
+
+.userPage .followButton{
+    margin-top:12px;
+    padding:8px 18px;
+    border-radius:20px;
+    border:none;
+    font-weight:600;
+    background:linear-gradient(90deg,#7bd3ff,#ff7fd7);
+    color:white;
+    cursor:pointer;
+}
+
+/* צד ימין */
+
+.userPage .profileRight{
+    display:flex;
+    flex-direction:column;
+}
+
+/* שם משתמש */
+
+.userPage .username{
+    font-size:34px;
+    font-weight:800;
+}
+
+/* סטטיסטיקות */
+
+.userPage .userStats{
+    margin-top:12px;
+    display:flex;
+    gap:30px;
+    font-weight:600;
+}
+
+/* קו POSTS */
+
+.userPage .postsDivider{
+    margin-top:40px;
+    border-top:1px solid rgba(255,255,255,0.2);
+    text-align:center;
+}
+
+.userPage .postsDivider span{
+    display:inline-block;
+    margin-top:-12px;
+    padding:0 15px;
+    font-weight:700;
+    letter-spacing:3px;
+}
+
+/* גריד פוסטים */
+
+.userPage .postsGrid{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.userPage .postTile img{
+    width:100%;
+    border-radius:12px;
+}
+
+/* מצב שאין פוסטים */
+
+.userPage .emptyPosts{
+    text-align:center;
+    margin-top:60px;
+}
+
+
+/* תמונת פרופיל אם אין תמונה */
+
+.userPage .defaultProfile{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:#2a2a2a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:4px solid #7c6cff;
+}
+
+.userPage .defaultProfile::after{
+    content:"👤";
+    font-size:40px;
+    opacity:0.6;
+}

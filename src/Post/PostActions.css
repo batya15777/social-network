@@ -1,0 +1,34 @@
+.postActions{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-top: 12px;
+}
+
+.likeButton{
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 28px;
+    cursor: pointer;
+    color: #8a8a8a;
+    transition: transform 0.15s ease, color 0.2s ease;
+}
+
+.likeButton:hover{
+    transform: scale(1.12);
+}
+
+.likeButton.liked{
+    color: #ff3040;
+}
+
+.likesCount{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+}

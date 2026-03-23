@@ -6,6 +6,7 @@ function Navbar({profileImage}){
 
         <nav className="igNavbar">
 
+
             <Link className="igNavItem" to="/dashboard">
                 <span className="igNavIcon">⌂</span>
                 <span>Home</span>

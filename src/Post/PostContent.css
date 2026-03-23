@@ -1,0 +1,51 @@
+.post{
+    width:100%;
+    height:100%;
+    position:relative;
+    overflow:hidden;
+    border-radius:8px;
+    background:#020617;
+}
+
+/* תמונה */
+.postImg{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+/* קופסה של הטקסט */
+.postTextWrapper{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+}
+
+/* הטקסט עצמו */
+.postText{
+    margin:0;
+
+    color:white;
+    font-size:16px;
+    line-height:1.4;
+}
+
+/* ⭐ תוספת קטנה למסך פוסט */
+.postPageImg{
+    max-width:500px;
+    width:100%;
+    border-radius:12px;
+}
+
+/* ⭐ תוספת לטקסט פוסט במסך פוסט */
+.postPageText{
+    font-size:28px;
+    text-align:center;
+    padding:80px 40px;
+    color:white;
+}

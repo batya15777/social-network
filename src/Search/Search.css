@@ -1,0 +1,81 @@
+.searchContainer{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:40px;
+}
+
+.searchInput{
+    width:320px;
+    padding:10px 15px;
+    border-radius:10px;
+    border:none;
+    outline:none;
+    background:rgba(255,255,255,0.1);
+    color:white;
+    font-size:15px;
+}
+
+.searchInput::placeholder{
+    color:rgba(255,255,255,0.6);
+}
+
+.resultsBox{
+    width:320px;
+    margin-top:10px;
+}
+
+.searchResult{
+    padding:8px 10px;
+    cursor:pointer;
+}
+
+.searchResult:hover{
+    background:rgba(255,255,255,0.08);
+    border-radius:8px;
+}
+
+/* שורת משתמש */
+
+.resultsBox .userHeader{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+/* תמונת פרופיל */
+
+.resultsBox .profileImage{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    object-fit:cover;
+    border:none;
+    box-shadow:none;
+}
+
+/* אם אין תמונה */
+
+.resultsBox .defaultProfile{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#2a2a2a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.resultsBox .defaultProfile::after{
+    content:"👤";
+    font-size:18px;
+    opacity:0.6;
+}
+
+/* שם משתמש */
+
+.resultsBox .username{
+    font-size:15px;
+    color:white;
+    font-weight:400;
+}
