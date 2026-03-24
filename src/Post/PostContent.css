@@ -49,3 +49,25 @@
     padding:80px 40px;
     color:white;
 }
+/* ===== Comment Button Fix ===== */
+.commentButton {
+    background: transparent;
+    border: none;
+    padding: 0;
+
+    cursor: pointer;
+
+    font-size: 20px;
+    color: white;
+
+    display: flex;
+    align-items: center;
+}
+
+.commentButton:focus {
+    outline: none;
+}
+
+.commentButton:hover {
+    opacity: 0.8;
+}

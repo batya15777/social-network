@@ -4,12 +4,11 @@ import axios from "axios";
 import "./PostActions.css";
 
 
-function PostActions({id,like,comment,userLiked}){
+function PostActions({id,likes,comments,userLiked,onOpenComments}){
 
-    const [likes,setLikes] = useState(like ||0)
+    const [countLikes,setCountLikes] = useState(likes ||0)
     const [isColor,setIsColor] = useState(userLiked)
     const token = Cookies.get("token")
-
 
 
     const handleLikeClick=()=>{
@@ -19,7 +18,7 @@ function PostActions({id,like,comment,userLiked}){
             .then((response)=>{
                 console.log("clicked like", id)
                 if(response.data !== null){
-                        setLikes(response.data);
+                        setCountLikes(response.data);
                         setIsColor(prev =>!prev);
                 }
 
@@ -31,22 +30,33 @@ function PostActions({id,like,comment,userLiked}){
 
 
 
-
     return (
         <div className="postActions">
 
-            <button
-                className={isColor ? "likeButton liked" : "likeButton"}
-                onClick={handleLikeClick}
-            >
-                ♥
-            </button>
+            <div className="actionItem">
+                <button
+                    className={isColor ? "likeButton liked" : "likeButton"}
+                    onClick={handleLikeClick}
+                >
+                    ♥
+                </button>
 
-            <span className="likesCount">
-            {likes}
-        </span>
+                <span className="countText">
+                {countLikes}
+            </span>
+            </div>
+
+            <div className="actionItem" onClick={onOpenComments}>
+                <button className="commentButton">
+                    💬
+                </button>
+
+                <span className="countText">
+                {comments || 0}
+            </span>
+            </div>
 
         </div>
-    )
+    );
 }
 export default PostActions;

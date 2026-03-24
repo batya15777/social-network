@@ -1,34 +1,67 @@
-.postActions{
+.postActions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+/* כל אייקון + מספר */
+.actionItem {
     display: flex;
     align-items: center;
-    gap: 3px;
-    margin-top: 12px;
-}
+    gap: 2px; /* ⬅️ כמעט בלי רווח */
 
-.likeButton{
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font-size: 28px;
-    cursor: pointer;
-    color: #8a8a8a;
-    transition: transform 0.15s ease, color 0.2s ease;
-}
-
-.likeButton:hover{
-    transform: scale(1.12);
-}
-
-.likeButton.liked{
-    color: #ff3040;
-}
-
-.likesCount{
-    margin: 0;
-    padding: 0;
-    color: white;
-    font-size: 16px;
-    font-weight: 500;
     line-height: 1;
+}
+
+/* כפתורים */
+.likeButton,
+.commentButton {
+    background: transparent;
+    border: none;
+
+    font-size: 18px;
+    cursor: pointer;
+
+    padding: 0; /* ⬅️ חשוב מאוד */
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+
+    line-height: 1;
+}
+
+/* לב ברירת מחדל */
+.likeButton {
+    color: white;
+}
+
+/* לייק */
+.likeButton.liked {
+    color: #ef4444;
+}
+
+/* תגובות */
+.commentButton {
+    color: #cbd5e1;
+}
+
+/* מספרים */
+.countText {
+    color: #cbd5e1;
+    font-size: 14px;
+
+    display: flex;
+    align-items: center;
+
+    line-height: 1;
+
+    margin-left: 2px; /* ⬅️ שליטה מדויקת במקום gap */
+}
+.postActions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    margin-top: 8px; /* ⬅️ זה הפתרון */
 }

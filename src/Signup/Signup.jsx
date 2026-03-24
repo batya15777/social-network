@@ -146,7 +146,7 @@ function Signup(){
         axios.post("http://localhost:8080/signup-user",{name,lastName,phone,generalSex,username,password})
             .then((response =>{
                 if (response.data.success){
-                    navigate("/profile")
+                    navigate("/")
 
                 }
                 else {

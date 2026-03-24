@@ -4,11 +4,20 @@ import PostContent from "./PostContent.jsx";
 import PostActions from "./PostActions.jsx";
 import { useParams } from "react-router-dom";
 import Cookies from "js-cookie";
+import CommentPopUp from "../CommentPopUp.jsx";
 
 function PostPage(){
     const  {id} = useParams();
     const [post,setPost] = useState();
-    const token = Cookies.get("token")
+    const token = Cookies.get("token");
+    const [open,setOpen] = useState(false);
+
+    const handleOpen =()=>{
+        setOpen(true);
+    }
+    const handleClose =()=>{
+        setOpen(false);
+    }
 
 
 
@@ -36,12 +45,17 @@ function PostPage(){
                         imageUrl={post.image_url}
                     />
 
-                    <PostActions
+                    <PostActions onOpenComments={handleOpen}
                         id={post.id}
-                        like={post.like}
-                        comment={post.comment}
+                        likes={post.likes}
+                        comments={post.comments}
                         userLiked={post.userLiked}
                     />
+                    {open &&
+                        <CommentPopUp
+                            onClose={handleClose}
+                            id={post.id}
+                        />}
                 </div>
             )}
         </div>
