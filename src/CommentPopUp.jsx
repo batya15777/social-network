@@ -32,19 +32,19 @@ function CommentPopUp({id,onClose}) {
         })
 
     }
-     const getComments =()=>{
-         axios.get("http://localhost:8080/getComments/"+id,{
-             headers:{Authorization:token}
-         }).then(response=> {
-             if (response.data!=null){
-                 if (response.data){
-                     setComments(response.data);
-                 }
-             }
-         })
-     }
+    const getComments =()=>{
+        axios.get("http://localhost:8080/getComments/"+id,{
+            headers:{Authorization:token}
+        }).then(response=> {
+            if (response.data!=null){
+                if (response.data){
+                    setComments(response.data);
+                }
+            }
+        })
+    }
     useEffect(() => {
-       getComments()   ;
+        getComments()   ;
     }, []);
 
 
@@ -107,6 +107,6 @@ function CommentPopUp({id,onClose}) {
         </div>
     );
 
-    
+
 }
 export default CommentPopUp;

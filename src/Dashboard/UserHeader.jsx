@@ -1,6 +1,6 @@
 import {useNavigate} from "react-router-dom";
 
-function UserHeader({id,username, profileUrl,isFollowing = false,showButton = false}){
+function UserHeader({id,username, profileUrl,isFollowing = false,showButton = false,onFollowClick}){
 
     const hasImage = profileUrl && profileUrl.trim() !== "";
     const navbar = useNavigate();
@@ -8,6 +8,7 @@ function UserHeader({id,username, profileUrl,isFollowing = false,showButton = fa
     const navigateUserProfile =()=>{
         navbar("/user-page/"+id);
     }
+    console.log("isFollowing in header:", isFollowing);
     return (
         <div className="userHeader" onClick={navigateUserProfile}>
 
@@ -30,7 +31,11 @@ function UserHeader({id,username, profileUrl,isFollowing = false,showButton = fa
             {showButton && (
                 <button
                     className="followButton"
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) =>{
+                        e.stopPropagation();
+                        onFollowClick();
+                    }}
+
                 >
                     {isFollowing ? "Following" : "Follow"}
                 </button>

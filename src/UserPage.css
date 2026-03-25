@@ -20,6 +20,20 @@
     align-items:center;
 }
 
+/* 🔥 תיקון: סידור UserHeader בצורה אנכית */
+
+.userPage .userHeader{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* מסתיר username בתוך header (כי יש בצד ימין) */
+
+.userPage .userHeader .username{
+    display:none;
+}
+
 /* תמונת פרופיל */
 
 .userPage .userHeader img{
@@ -102,7 +116,6 @@
     text-align:center;
     margin-top:60px;
 }
-
 
 /* תמונת פרופיל אם אין תמונה */
 

@@ -19,6 +19,8 @@ function UserPage(){
         })
             .then(response =>{
                 console.log("user data:", response.data);
+                console.log("isFollowing:", response.data.isFollowing);
+
                 if (response.data!= null){
                     if (response.data){
                         setDataUser(response.data)
@@ -38,6 +40,19 @@ function UserPage(){
                     }
                 }
             })
+    }
+    const handleFollowClick =()=>{
+      axios.post("http://localhost:8080/followingClick/"+id,{},{
+          headers:{Authorization:token}
+      })
+          .then(response =>{
+             if (response.data != null){
+                 loadUser();
+             }
+          })
+
+
+
     }
 
 
@@ -60,12 +75,12 @@ function UserPage(){
                         <UserHeader
                             id={id}
                             profileUrl={dataUser.profileUrl}
-                            showButton={false}
+                            isFollowing={dataUser.following}
+                            showButton={true}
+                            onFollowClick={handleFollowClick}
                         />
 
-                        <button className="followButton">
-                            Follow
-                        </button>
+
 
                     </div>
 
