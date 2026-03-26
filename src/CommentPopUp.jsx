@@ -60,8 +60,11 @@ function CommentPopUp({id,onClose}) {
                             <div key={index} className="commentItem">
 
                                 <img
-                                    src={comment.profileUrl}
-                                    alt="profile"
+                                    src={
+                                        comment.profileUrl && comment.profileUrl.trim().length > 0
+                                            ? comment.profileUrl
+                                            : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                    }                                    alt="profile"
                                     className="commentProfileImg"
                                 />
 

@@ -48,6 +48,7 @@ function PostPage(){
                     <PostActions onOpenComments={handleOpen}
                         id={post.id}
                         likes={post.likes}
+                        date={post.createAt}
                         comments={post.comments}
                         userLiked={post.userLiked}
                     />

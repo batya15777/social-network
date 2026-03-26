@@ -4,7 +4,7 @@ import axios from "axios";
 import "./PostActions.css";
 
 
-function PostActions({id,likes,comments,userLiked,onOpenComments}){
+function PostActions({id,likes,comments,userLiked,onOpenComments,date}){
 
     const [countLikes,setCountLikes] = useState(likes ||0)
     const [isColor,setIsColor] = useState(userLiked)
@@ -55,7 +55,7 @@ function PostActions({id,likes,comments,userLiked,onOpenComments}){
                 {comments || 0}
             </span>
             </div>
-
+           <p>{new Date(date).toLocaleDateString()}</p>
         </div>
     );
 }

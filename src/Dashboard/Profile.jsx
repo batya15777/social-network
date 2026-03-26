@@ -118,7 +118,6 @@ function Profile(){
                     </button>
                 </div>
 
-                {/* RIGHT SIDE */}
                 <div className="profileInfo">
 
                     <div className="profileTopRow">
