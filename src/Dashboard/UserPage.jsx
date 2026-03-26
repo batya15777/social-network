@@ -2,8 +2,8 @@ import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import UserHeader from "./Dashboard/UserHeader.jsx";
-import Post from "./Post/Post.jsx";
+import UserHeader from "./UserHeader.jsx";
+import Post from "../Post/Post.jsx";
 import "./UserPage.css"
 
 

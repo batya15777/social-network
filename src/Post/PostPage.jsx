@@ -4,7 +4,7 @@ import PostContent from "./PostContent.jsx";
 import PostActions from "./PostActions.jsx";
 import { useParams } from "react-router-dom";
 import Cookies from "js-cookie";
-import CommentPopUp from "../CommentPopUp.jsx";
+import CommentPopUp from "./CommentPopUp.jsx";
 
 function PostPage(){
     const  {id} = useParams();

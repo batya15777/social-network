@@ -5,7 +5,7 @@ import Dashboard from "./Dashboard/Dashboard.jsx";
 import Profile from "./Dashboard/Profile.jsx";
 import Search from "./Search/Search.jsx";
 import PostPage from "./Post/PostPage.jsx";
-import UserPage from "./UserPage.jsx";
+import UserPage from "./Dashboard/UserPage.jsx";
 
 function App() {
     return (
